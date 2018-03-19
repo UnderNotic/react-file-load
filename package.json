@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React file load component",
   "main": "dist/index.js",
-  "style": "style.css",
+  "style": "src/style.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +29,9 @@
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
     "react-dom": "^15.3.0 || ^16.0.0"
+  },
+  "dependencies": {
+    "readery": "^0.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
