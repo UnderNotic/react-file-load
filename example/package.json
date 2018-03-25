@@ -1,5 +1,6 @@
 {
   "name": "react-file-load-example",
+  "homepage": "https://undernotic.github.io/react-file-load",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
