@@ -14,13 +14,11 @@ export default class ExampleComponent extends Component {
 
   render() {
     const {
-      text
+      showPercentages
     } = this.props
 
     return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
+      <input>{this.props.children}</input>
     )
   }
 }
