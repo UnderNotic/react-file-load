@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 import ReactLoadComponent from "react-file-load";
 
 class App extends Component {
   render() {
-    return (
-      <ReactLoadComponent>My text</ReactLoadComponent>
-    );
+    return <ReactLoadComponent text="My text" />;
   }
 }
 
