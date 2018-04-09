@@ -1,3 +1,8 @@
-.some-class-name{
-    background: linear-gradient(to right, blue 50%, yellow 50%);
+.some-class-name {
+  background: linear-gradient(to right, blue 50%, yellow 50%);
+}
+
+.btn {
+  border: grey solid 1px;
+  padding: 12px;
 }

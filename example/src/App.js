@@ -5,7 +5,12 @@ import ReactLoadComponent from "react-file-load";
 
 class App extends Component {
   render() {
-    return <ReactLoadComponent text="My text" />;
+    return (
+      <div>
+        <br/>
+        <ReactLoadComponent text="My text" />;
+      </div>
+    );
   }
 }
 
