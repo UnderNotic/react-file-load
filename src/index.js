@@ -13,20 +13,24 @@ export default class ReactFileLoad extends Component {
     text: PropTypes.string
   };
 
-  handleFile() {
-    
-  }
+  handleFileChange = e => {
+    console.log(e.target.files);
+    console.log(readery);
+    let file = e.target.files[0];
+    readery.readFromFile(file, (data)=> console.log(data))
+  };
 
   render() {
     const { showPercentages, text, accept } = this.props;
 
     return (
       <div>
-        <label for="files" className={styles.btn}>
+        <label htmlFor="files" className={styles.btn}>
           {text}
         </label>
         <input
           id="files"
+          onChange={this.handleFileChange}
           style={{ display: "None" }}
           type="file"
           accept={accept}
