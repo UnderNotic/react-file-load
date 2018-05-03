@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <br/>
-        <ReactLoadComponent text="My text" />;
+        <ReactLoadComponent text="My text" />
       </div>
     );
   }

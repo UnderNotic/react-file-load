@@ -13,19 +13,32 @@ export default class ReactFileLoad extends Component {
     text: PropTypes.string
   };
 
+  state = {
+    progress: 0
+  };
+
   handleFileChange = e => {
-    console.log(e.target.files);
-    console.log(readery);
     let file = e.target.files[0];
-    readery.readFromFile(file, (data)=> console.log(data))
+    readery.readFromFile(
+      file,
+      data =>{},
+      p => this.setState({progress: p}),
+      null,
+      1024
+    );
   };
 
   render() {
-    const { showPercentages, text, accept } = this.props;
+    const { showPercentages, text, accept, fromColor = "#007bff", toColor = "#2c5888", finishedColor } = this.props;
+    console.log(this.state.progress);
 
+    const gradientString = this.state.progress === 100 ? "red" : `linear-gradient(to right, ${toColor} ${this.state.progress}%, ${fromColor} 0%)`;
+
+    const classNames = `${styles.btn} react-file-load-btn`;
     return (
       <div>
-        <label htmlFor="files" className={styles.btn}>
+        <label type="button" htmlFor="files" className={classNames}
+          style={{background: gradientString}}>
           {text}
         </label>
         <input
