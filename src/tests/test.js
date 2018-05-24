@@ -1,3 +1,4 @@
+import React from "react";
 import {
   renderIntoDocument,
   cleanup,
@@ -9,9 +10,9 @@ import ReactFileLoad from "../index";
 
 describe("ExampleComponent", () => {
   it("is truthy", () => {
-    // const { getByText } = render(
-    //   <ReactFileLoad>My button</ReactFileLoad>
-    // );
+    const { getByText } = render(
+      <ReactFileLoad>My button</ReactFileLoad>
+    );
     // Simulate.fireEvent(getByText("My button"), {
     //   target: {}
     // });
