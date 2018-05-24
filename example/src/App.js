@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <br/>
+        <br />
         <ReactLoadComponent text="My text" />
       </div>
     );
