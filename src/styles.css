@@ -5,8 +5,9 @@
   border-color: #007bff;
   cursor: pointer;
 
-  height: 100%;
+  display: inline-block;
   width: 100%;
+
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
