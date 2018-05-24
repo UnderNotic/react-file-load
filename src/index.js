@@ -1,5 +1,5 @@
 /**
- * @class ExampleComponent
+ * @class ReactFileLoad
  */
 
 import React, { Component } from "react";
@@ -21,33 +21,48 @@ export default class ReactFileLoad extends Component {
     let file = e.target.files[0];
     readery.readFromFile(
       file,
-      data =>{},
-      p => this.setState({progress: p}),
+      data => {},
+      p => this.setState({ progress: p }),
       null,
       1024
     );
   };
 
   render() {
-    const { showPercentages, text, accept, fromColor = "#007bff", toColor = "#2c5888", finishedColor } = this.props;
+    const {
+      showPercentages,
+      text,
+      accept,
+      fromColor = "#007bff",
+      toColor = "#2c5888",
+      finishedColor = "#2c5888",
+    } = this.props;
     console.log(this.state.progress);
 
-    const gradientString = this.state.progress === 100 ? "red" : `linear-gradient(to right, ${toColor} ${this.state.progress}%, ${fromColor} 0%)`;
+    let style =
+      this.state.progress === 0
+        ? {}
+        : this.state.progress === 100
+          ? { background: finishedColor }
+          : {
+              background: `linear-gradient(to right, ${toColor} ${
+                this.state.progress
+              }%, ${fromColor} 0%)`
+            };
 
-    const classNames = `${styles.btn} react-file-load-btn`;
+    const classNames = `react-file-load-btn ${styles["react-file-load-btn"]}`;
     return (
       <div>
-        <label type="button" htmlFor="files" className={classNames}
-          style={{background: gradientString}}>
-          {text}
-        </label>
-        <input
-          id="files"
-          onChange={this.handleFileChange}
-          style={{ display: "None" }}
-          type="file"
-          accept={accept}
-        />
+          <label type="button" htmlFor="files" className={`${classNames}`} style={style}>
+            {text}
+          </label>
+          <input
+            id="files"
+            onChange={this.handleFileChange}
+            style={{ display: "None" }}
+            type="file"
+            accept={accept}
+          />
       </div>
     );
   }
