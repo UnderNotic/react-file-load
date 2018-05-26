@@ -37,7 +37,6 @@ export default class ReactFileLoad extends Component {
       toColor = "#2c5888",
       finishedColor = "#2c5888",
     } = this.props;
-    console.log(this.state.progress);
 
     let style =
       this.state.progress === 0

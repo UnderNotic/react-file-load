@@ -6,15 +6,29 @@ import {
   render,
   fireEvent
 } from "react-testing-library";
+
 import ReactFileLoad from "../index";
 
 describe("ExampleComponent", () => {
-  it("is truthy", () => {
-    const { getByText } = render(
-      <ReactFileLoad>My button</ReactFileLoad>
+  it("should render", () => {
+    render(<ReactFileLoad text="x" />);
+  });
+
+  it("should have correct default finish color", () => {
+    const { getByLabelText, getByText, debug } = render(<ReactFileLoad text="My label text" />);
+
+    const fileInputField = getByLabelText("My label text");
+
+    const file = new File(
+      [
+        "Chuck Norris once urinated in a semi truck's gas tank as a joke. That truck is now known as Optimus Prime."
+      ],
+      "chucknorris.txt"
     );
-    // Simulate.fireEvent(getByText("My button"), {
-    //   target: {}
-    // });
+    Simulate.change(fileInputField, { target: { files: [file] } });
+
+    const label = getByText("My label text");
+
+    expect(label.style.background).toBe("#2c5888");
   });
 });
