@@ -18,24 +18,34 @@ export default class ReactFileLoad extends Component {
   };
 
   handleFileChange = e => {
+    const {
+      onChange = () => {},
+      onProgress = () => {},
+      onDataChunk = () => {},
+      readeryConfig,
+      chunkSize = 1024
+    } = this.props;
+
     let file = e.target.files[0];
     readery.readFromFile(
       file,
-      data => {},
-      p => this.setState({ progress: p }),
-      null,
-      1024
+      data => onDataChunk,
+      p => {
+        this.setState({ progress: p });
+        onProgress(p);
+      },
+      readeryConfig,
+      chunkSize
     );
   };
 
   render() {
     const {
-      showPercentages,
       text,
       accept,
       fromColor = "#007bff",
       toColor = "#2c5888",
-      finishedColor = "#2c5888",
+      finishedColor = "#2c5888"
     } = this.props;
 
     let style =
@@ -49,19 +59,24 @@ export default class ReactFileLoad extends Component {
               }%, ${fromColor} 0%)`
             };
 
-    const classNames = `react-file-load-btn ${styles["react-file-load-btn"]}`;
+    const classNames = `${styles["react-file-load-btn"]}`;
     return (
       <div>
-          <label type="button" htmlFor="files" className={`${classNames}`} style={style}>
-            {text}
-          </label>
-          <input
-            id="files"
-            onChange={this.handleFileChange}
-            style={{ display: "None" }}
-            type="file"
-            accept={accept}
-          />
+        <label
+          type="button"
+          htmlFor="files"
+          className={`${classNames}`}
+          style={style}
+        >
+          {text}
+        </label>
+        <input
+          id="files"
+          onChange={this.handleFileChange}
+          style={{ display: "None" }}
+          type="file"
+          accept={accept}
+        />
       </div>
     );
   }

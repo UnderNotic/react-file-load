@@ -4,6 +4,7 @@ import {
   cleanup,
   Simulate,
   render,
+  wait,
   fireEvent
 } from "react-testing-library";
 
@@ -14,8 +15,10 @@ describe("ExampleComponent", () => {
     render(<ReactFileLoad text="x" />);
   });
 
-  it("should have correct default finish color", () => {
-    const { getByLabelText, getByText, debug } = render(<ReactFileLoad text="My label text" />);
+  it("should have correct default finish color", async () => {
+    const { getByLabelText, getByText, debug } = render(
+      <ReactFileLoad text="My label text" />
+    );
 
     const fileInputField = getByLabelText("My label text");
 
@@ -27,8 +30,31 @@ describe("ExampleComponent", () => {
     );
     Simulate.change(fileInputField, { target: { files: [file] } });
 
-    const label = getByText("My label text");
+    await wait(() => {
+      getByLabelText("My label text");
+    });
 
-    expect(label.style.background).toBe("#2c5888");
+    const label = getByText("My label text");
+    expect(label.style.background).toBe("rgb(44, 88, 136)"); // 'rgb(44, 88, 136)' == #2c5888
+  });
+
+  it("should load file data", async () => {
+
+    
+  });
+
+  it("should call progress callback", async () => {
+
+
+  });
+
+  it("should show progress visually", async () => {
+
+
+  });
+
+  it("should respect readery configS", async () => {
+
+
   });
 });
