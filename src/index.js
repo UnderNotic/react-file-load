@@ -41,6 +41,7 @@ export default class ReactFileLoad extends Component {
 
   render() {
     const {
+      style = {},
       text,
       accept,
       fromColor = "#007bff",
@@ -48,7 +49,7 @@ export default class ReactFileLoad extends Component {
       finishedColor = "#2c5888"
     } = this.props;
 
-    let style =
+    let ownStyle =
       this.state.progress === 0
         ? {}
         : this.state.progress === 100
@@ -66,7 +67,7 @@ export default class ReactFileLoad extends Component {
           type="button"
           htmlFor="files"
           className={`${classNames}`}
-          style={style}
+          style={{...ownStyle, ...style}}
         >
           {text}
         </label>
