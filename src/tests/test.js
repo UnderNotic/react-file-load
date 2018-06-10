@@ -16,11 +16,9 @@ describe("ExampleComponent", () => {
   });
 
   it("should have correct default finish color", async () => {
-    const { getByLabelText, getByText, debug } = render(
+    const { getByLabelText, getByText } = render(
       <ReactFileLoad text="My label text" />
     );
-
-    const fileInputField = getByLabelText("My label text");
 
     const file = new File(
       [
@@ -28,33 +26,83 @@ describe("ExampleComponent", () => {
       ],
       "chucknorris.txt"
     );
+
+    const fileInputField = getByLabelText("My label text");
     Simulate.change(fileInputField, { target: { files: [file] } });
 
     await wait(() => {
-      getByLabelText("My label text");
+      const label = getByText("My label text");
+      expect(label.style.background).toBe("rgb(44, 88, 136)"); // 'rgb(44, 88, 136)' == #2c5888
     });
-
-    const label = getByText("My label text");
-    expect(label.style.background).toBe("rgb(44, 88, 136)"); // 'rgb(44, 88, 136)' == #2c5888
   });
 
   it("should load file data", async () => {
+    const onDataChunkCallback = jest.fn();
+    const { getByLabelText } = render(
+      <ReactFileLoad text="My label text" onDataChunk={onDataChunkCallback} />
+    );
 
-    
+    const fileContent =
+      "Chuck Norris once urinated in a semi truck's gas tank as a joke. That truck is now known as Optimus Prime.";
+    const file = new File([fileContent], "chucknorris.txt");
+
+    const fileInputField = getByLabelText("My label text");
+    Simulate.change(fileInputField, { target: { files: [file] } });
+
+    await wait(() => {
+      expect(onDataChunkCallback.mock.calls.length).toBe(1);
+      expect(onDataChunkCallback.mock.calls[0][0]).toBe(fileContent);
+    });
   });
 
-  it("should call progress callback", async () => {
+  it("should call onChange, onProgress, onFinished callbacks", async () => {
+    const onProgressCallback = jest.fn();
+    const onChangeCallback = jest.fn();
+    const onFinishedCallback = jest.fn();
 
+    const { getByLabelText } = render(
+      <ReactFileLoad
+        text="My label text"
+        onProgress={onProgressCallback}
+        onChange={onChangeCallback}
+        onFinished={onFinishedCallback}
+      />
+    );
 
+    const fileContent =
+      "Chuck Norris once urinated in a semi truck's gas tank as a joke. That truck is now known as Optimus Prime.";
+    const file = new File([fileContent], "chucknorris.txt");
+
+    const fileInputField = getByLabelText("My label text");
+    Simulate.change(fileInputField, { target: { files: [file] } });
+
+    await wait(() => {
+      expect(onProgressCallback.mock.calls.length).toBe(1);
+      expect(onProgressCallback.mock.calls[0][0]).toBe(100);
+    });
   });
 
-  it("should show progress visually", async () => {
+  it("should respect readery config", async () => {
+    const onDataChunkCallback = jest.fn();
+    const { getByLabelText } = render(
+      <ReactFileLoad
+        text="My label text"
+        onDataChunk={onDataChunkCallback}
+        readeryConfig={{ splitBy: ",", encoding: "UTF-8" }}
+      />
+    );
 
+    const fileContent = "Peter, Adam, Monique";
+    const file = new File([fileContent], "file.csv");
 
-  });
+    const fileInputField = getByLabelText("My label text");
+    Simulate.change(fileInputField, { target: { files: [file] } });
 
-  it("should respect readery configS", async () => {
-
-
+    await wait(() => {
+      expect(onDataChunkCallback.mock.calls.length).toBe(3);
+      expect(onDataChunkCallback.mock.calls[0][0]).toBe("Peter");
+      expect(onDataChunkCallback.mock.calls[1][0].trim()).toBe("Adam");
+      expect(onDataChunkCallback.mock.calls[2][0].trim()).toBe("Monique");
+    });
   });
 });

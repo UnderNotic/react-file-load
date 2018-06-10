@@ -22,18 +22,21 @@ export default class ReactFileLoad extends Component {
       onChange = () => {},
       onProgress = () => {},
       onDataChunk = () => {},
+      onFinished = () => {},
       readeryConfig,
       chunkSize = 1024
     } = this.props;
 
+    onChange();
     let file = e.target.files[0];
     readery.readFromFile(
       file,
-      data => onDataChunk,
+      onDataChunk,
       p => {
         this.setState({ progress: p });
         onProgress(p);
       },
+      onFinished,
       readeryConfig,
       chunkSize
     );
