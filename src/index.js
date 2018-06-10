@@ -14,6 +14,7 @@ export default class ReactFileLoad extends Component {
   };
 
   state = {
+    isLoading: false,
     progress: 0
   };
 
@@ -33,10 +34,13 @@ export default class ReactFileLoad extends Component {
       file,
       onDataChunk,
       p => {
-        this.setState({ progress: p });
+        this.setState({ progress: p, isLoading: true });
         onProgress(p);
       },
-      onFinished,
+      () => {
+        this.setState({ isLoading: false });
+        onFinished();
+      },
       readeryConfig,
       chunkSize
     );
@@ -52,7 +56,7 @@ export default class ReactFileLoad extends Component {
       finishedColor = "#2c5888"
     } = this.props;
 
-    let ownStyle =
+    let gradientStyle =
       this.state.progress === 0
         ? {}
         : this.state.progress === 100
@@ -62,6 +66,7 @@ export default class ReactFileLoad extends Component {
                 this.state.progress
               }%, ${fromColor} 0%)`
             };
+    let cursorStyle = this.state.isLoading ? { cursor: "wait" } : {};
 
     const classNames = `${styles["react-file-load-btn"]}`;
     return (
@@ -70,11 +75,12 @@ export default class ReactFileLoad extends Component {
           type="button"
           htmlFor="files"
           className={`${classNames}`}
-          style={{...ownStyle, ...style}}
+          style={{ ...gradientStyle, ...cursorStyle, ...style }}
         >
           {text}
         </label>
         <input
+          disabled={this.state.isLoading}
           id="files"
           onChange={this.handleFileChange}
           style={{ display: "None" }}

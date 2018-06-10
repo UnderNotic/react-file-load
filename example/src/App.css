@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  height: 150px;
+  height: 120px;
   padding: 20px;
   color: white;
 }
@@ -21,13 +21,20 @@
 .Flex-container {
   font-size: large;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
-.Flex-container>div {
-  flex: 0 50%;
+.Link {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid transparent;
+  border-color: #007bff;
+  border-radius: 0.25rem;
 }
 
+.Link a{
+  color: black;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
