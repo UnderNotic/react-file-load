@@ -61,12 +61,7 @@ describe("ExampleComponent", () => {
     const onFinishedCallback = jest.fn();
 
     const { getByLabelText } = render(
-      <ReactFileLoad
-        text="My label text"
-        onProgress={onProgressCallback}
-        onChange={onChangeCallback}
-        onFinished={onFinishedCallback}
-      />
+      <ReactFileLoad text="My label text" onProgress={onProgressCallback} onChange={onChangeCallback} onFinished={onFinishedCallback}/>
     );
 
     const fileContent =
@@ -85,14 +80,11 @@ describe("ExampleComponent", () => {
   it("should respect readery config", async () => {
     const onDataChunkCallback = jest.fn();
     const { getByLabelText } = render(
-      <ReactFileLoad
-        text="My label text"
-        onDataChunk={onDataChunkCallback}
-        readeryConfig={{ splitBy: ",", encoding: "UTF-8" }}
-      />
+      <ReactFileLoad text="My label text" onDataChunk={onDataChunkCallback} readeryConfig={{ splitBy: ",", encoding: "UTF-8" }}/>
     );
 
-    const fileContent = "Peter, Adam, Monique";
+    const fileContent =
+      "Peter, Adam, Monique";
     const file = new File([fileContent], "file.csv");
 
     const fileInputField = getByLabelText("My label text");
@@ -104,5 +96,20 @@ describe("ExampleComponent", () => {
       expect(onDataChunkCallback.mock.calls[1][0].trim()).toBe("Adam");
       expect(onDataChunkCallback.mock.calls[2][0].trim()).toBe("Monique");
     });
+  });
+
+  it("should not execute readery read when no file specified", async () => {
+    
+    const { getByLabelText } = render(
+      <ReactFileLoad text="My label text"/>
+    );
+
+    const file = new File([], "file.csv");
+
+    const fileInputField = getByLabelText("My label text");
+    Simulate.change(fileInputField, { target: { files: [file] } });
+
+    await wait(() => {
+        });
   });
 });
