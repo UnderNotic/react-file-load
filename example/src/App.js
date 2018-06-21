@@ -1,9 +1,7 @@
 import React, { Component } from "react";
+import Code from "./Code";
 import "./App.css";
 import logo from "./logo.png";
-import code1 from "./code1.png";
-import code2 from "./code2.png";
-import code3 from "./code3.png";
 
 import ReactLoadComponent from "react-file-load";
 
@@ -18,14 +16,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <hr />
-
         <div className="Flex-container">
           <div style={{ marginTop: "150px",  marginRight: "10px" }}>
             <ReactLoadComponent text="Click me to check progress bar!" />
           </div>
-          <div>
+          <div style={{width: "70%"}}>
             <h2>Progress bar</h2>
-              <img src={code1} style={{width: "100%"}} alt="code" />
+            <Code>{example1Text}</Code>;  
           </div>
         </div>
         <hr />
@@ -41,7 +38,7 @@ class App extends Component {
           <div>
             <h2>Read data in chunks</h2>
             <p>
-              <img src={code2} style={{width: "100%"}} alt="code" />
+
             </p>
           </div>
         </div>
@@ -60,7 +57,7 @@ class App extends Component {
           <div>
             <h2>Highly customizable</h2>
             <p>
-              <img src={code3} style={{width: "100%"}} alt="code" />
+              
             </p>
           </div>
         </div>
