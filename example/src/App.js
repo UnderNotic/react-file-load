@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Code from "./Code";
 import "./App.css";
 import logo from "./logo.png";
-
+import HighlightedCode from "./HighlightedCode";
 import ReactLoadComponent from "react-file-load";
 
 class App extends Component {
@@ -22,7 +21,7 @@ class App extends Component {
           </div>
           <div style={{width: "70%"}}>
             <h2>Progress bar</h2>
-            <Code>{example1Text}</Code>;  
+            <HighlightedCode>{example1Text}</HighlightedCode>;  
           </div>
         </div>
         <hr />
