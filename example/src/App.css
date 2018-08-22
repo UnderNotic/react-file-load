@@ -8,6 +8,10 @@
   height: 80px;
 }
 
+.App-gif {
+  margin-left: 30px;
+}
+
 .App-header {
   height: 120px;
   padding: 20px;
@@ -22,6 +26,12 @@
   font-size: large;
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Flex-container > div {
+  margin: 5px;
 }
 
 .Link {
