@@ -7,15 +7,21 @@ import ReactLoadComponent from "react-file-load";
 
 class App extends Component {
   render() {
-    let example1Text = `<ReactLoadComponent text="Click me to check progress bar!"/>`;
-    let example2Text = `<ReactLoadComponent text="Click me and provide comma seperated file!" 
+    let example1Text = `<ReactLoadComponent 
+    text="Click me to check progress bar!"
+/>`;
+    let example2Text = `<ReactLoadComponent 
+    text="Click me and provide comma seperated file!" 
     readeryConfig={{ splitBy: ",", encoding: "UTF-8" }} 
-    onDataChunk={i => console.log("Im item from csv file " + i)}/>`;
-    let example3Text = `<ReactLoadComponent text="Custom colors" 
-    fromColor = "yellow" 
+    onDataChunk={i => console.log("Im item from csv file " + i)}
+/>`;
+    let example3Text = `<ReactLoadComponent 
+    text="Custom colors" 
+    fromColor="yellow" 
     toColor="black" 
     finishedColor="green" 
-    style={{backgroundColor: "grey", color: "red", width: "400px"}}/>`;
+    style={{backgroundColor: "grey", color: "red", width: "400px"}}
+/>`;
     return (
       <div className="App">
         <header className="App-header">
@@ -25,7 +31,7 @@ class App extends Component {
         <hr />
 
         <div>
-          <h2>Progress bar -></h2>
+          <h2>Progress bar</h2>
           <div className="Flex-container">
             <div>
               <ReactLoadComponent text="Click me to check progress bar!" />
@@ -79,7 +85,7 @@ class App extends Component {
         </div>
 
         <hr />
-        
+
         <br />
         <div className=" Link">
           <h2>
