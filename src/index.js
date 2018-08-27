@@ -5,10 +5,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import readery from "readery";
+import unique from "unique-string";
 
 import styles from "./styles.css";
 
 export default class ReactFileLoad extends Component {
+  constructor(){
+    super();
+    this.id = unique();
+  }
+  
   static propTypes = {
     text: PropTypes.string
   };
@@ -73,15 +79,15 @@ export default class ReactFileLoad extends Component {
       <div>
         <label
           type="button"
-          htmlFor="files"
-          className={`${classNames}`}
+          htmlFor={this.id}
+          className={classNames}
           style={{ ...gradientStyle, ...cursorStyle, ...style }}
         >
           {text}
         </label>
         <input
           disabled={this.state.isLoading}
-          id="files"
+          id={this.id}
           onChange={this.handleFileChange}
           style={{ display: "None" }}
           type="file"
