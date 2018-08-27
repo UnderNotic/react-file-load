@@ -38,10 +38,8 @@
     "react-dom": "^15.3.0 || ^16.0.0"
   },
   "dependencies": {
-    "nanoid": "^1.2.1",
     "readery": "^0.0.12",
     "rollup-plugin-node-globals": "^1.2.1",
-    "shortid": "^2.2.13",
     "unique-string": "^1.0.0"
   },
   "devDependencies": {
