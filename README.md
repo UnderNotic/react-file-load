@@ -1,4 +1,4 @@
-# <img height="250" alt="react-file-load" src="https://raw.githubusercontent.com/undernotic/react-file-load/master/example/src/logo.png">
+# <img height="100" alt="react-file-load" src="https://raw.githubusercontent.com/undernotic/react-file-load/master/example/src/logo.png">
 
 React component for loading data from files. [deaddesk.top/react-file-load](https://deaddesk.top/react-file-load)
 
