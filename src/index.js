@@ -5,14 +5,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import readery from "readery";
-import unique from "unique-string";
+import uuid from "lodash/uniqueId";
 
 import styles from "./styles.css";
 
 export default class ReactFileLoad extends Component {
   constructor(){
     super();
-    this.id = unique();
+    this.id = uuid();
   }
   
   static propTypes = {

@@ -9,8 +9,7 @@
     "test": "CI=1 react-scripts test --env=jsdom",
     "build": "rollup --config",
     "start": "rollup --config --watch",
-    "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
+    "predeploy": "cd example && npm run build",
     "deploy": "gh-pages -d example/build",
     "publish": "np"
   },
@@ -35,12 +34,12 @@
   "homepage": "https://github.com/UnderNotic/react-file-load#readme",
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0"
+    "react-dom": "^15.3.0 || ^16.0.0",
+    "prop-types": "^15.0.0"
   },
   "dependencies": {
     "readery": "^0.0.12",
-    "rollup-plugin-node-globals": "^1.2.1",
-    "unique-string": "^1.0.0"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -66,7 +65,6 @@
     "rollup": "^0.58.2",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.1.1",
     "rollup-plugin-postcss": "^1.6.2",
