@@ -76,7 +76,7 @@ export default class ReactFileLoad extends Component {
 
     const classNames = `${styles["react-file-load-btn"]}`;
     return (
-      <div>
+      <React.Fragment>
         <label
           type="button"
           htmlFor={this.id}
@@ -93,7 +93,7 @@ export default class ReactFileLoad extends Component {
           type="file"
           accept={accept}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
