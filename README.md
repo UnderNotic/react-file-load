@@ -20,7 +20,7 @@ yarn add react-file-load --save
 7,5Kb Gzipped 2.9Kb
 
 # Api
-```javascript
+```jsx
 <ReactLoadComponent 
     text = "Button text"
     fromColor = "yellow"
