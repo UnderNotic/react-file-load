@@ -20,6 +20,23 @@ yarn add react-file-load --save
 7,5Kb Gzipped 2.9Kb
 
 # Api
+```javascript
+<ReactLoadComponent 
+    text = "Button text"
+    fromColor = "yellow"
+    toColor = "black"
+    finishedColor = "green"
+    accept = ".csv"
+    onChange = {inputOnChangeEvent => console.log("file changed")}
+    onProgress = {progressNumber => console.log("progress between 0 and 100")}
+    onDataChunk = {(dataChunk, error) => console.log("invoked with data chunk")}
+    onFinished = {() => console.log("finished reading")}
+    readeryConfig = { splitBy: /\r?\n/, encoding: "UTF-8" }
+    chunkSize = {1024}
+/>
+```
+
+All parameters are optional except text.
 
 # Example usage
 See [deaddesk.top/react-file-load](https://deaddesk.top/react-file-load) 
