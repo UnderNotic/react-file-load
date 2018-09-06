@@ -2,19 +2,19 @@
  * @class ReactFileLoad
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import readery from "readery";
-import uuid from "lodash/uniqueId";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import readery from 'readery';
+import uuid from 'lodash/uniqueId';
 
-import styles from "./styles.css";
+import styles from './styles.css';
 
 export default class ReactFileLoad extends Component {
-  constructor(){
+  constructor() {
     super();
     this.id = uuid();
   }
-  
+
   static propTypes = {
     /**
      * Button text
@@ -103,9 +103,9 @@ export default class ReactFileLoad extends Component {
       style = {},
       text,
       accept,
-      fromColor = "#007bff",
-      toColor = "#2c5888",
-      finishedColor = "#2c5888"
+      fromColor = '#007bff',
+      toColor = '#2c5888',
+      finishedColor = '#2c5888'
     } = this.props;
 
     let gradientStyle =
@@ -114,17 +114,17 @@ export default class ReactFileLoad extends Component {
         : this.state.progress === 100
           ? { background: finishedColor }
           : {
-              background: `linear-gradient(to right, ${toColor} ${
-                this.state.progress
-              }%, ${fromColor} 0%)`
-            };
-    let cursorStyle = this.state.isLoading ? { cursor: "wait" } : {};
+            background: `linear-gradient(to right, ${toColor} ${
+              this.state.progress
+            }%, ${fromColor} 0%)`
+          };
+    let cursorStyle = this.state.isLoading ? { cursor: 'wait' } : {};
 
-    const classNames = `${styles["react-file-load-btn"]}`;
+    const classNames = `${styles['react-file-load-btn']}`;
     return (
       <React.Fragment>
         <label
-          type="button"
+          type='button'
           htmlFor={this.id}
           className={classNames}
           style={{ ...gradientStyle, ...cursorStyle, ...style }}
@@ -135,8 +135,8 @@ export default class ReactFileLoad extends Component {
           disabled={this.state.isLoading}
           id={this.id}
           onChange={this.handleFileChange}
-          style={{ display: "None" }}
-          type="file"
+          style={{ display: 'None' }}
+          type='file'
           accept={accept}
         />
       </React.Fragment>

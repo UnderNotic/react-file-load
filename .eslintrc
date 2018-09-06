@@ -17,6 +17,7 @@
   "rules": {
     "space-before-function-paren": 0,
     "react/jsx-boolean-value": 0,
-    "import/first": 0
+    "import/first": 0,
+    "semi": 0
   }
 }
