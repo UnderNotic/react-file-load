@@ -16,7 +16,53 @@ export default class ReactFileLoad extends Component {
   }
   
   static propTypes = {
-    text: PropTypes.string
+    /**
+     * Button text
+     */
+    text: PropTypes.string.isRequired,
+    /**
+     * Button 'not loaded' color
+     */
+    fromColor: PropTypes.string,
+    /**
+     * Button 'loaded' color
+     */
+    toColor: PropTypes.string,
+    /**
+     * Button 'full loaded' color
+     */
+    finishedColor: PropTypes.string,
+    /**
+     * input accept
+     */
+    accept: PropTypes.string,
+    /**
+     * input change
+     */
+    onChange: PropTypes.func,
+    /**
+     * On progress callback
+     */
+    onProgress: PropTypes.func,
+    /**
+     * On data chunk callback
+     */
+    onDataChunk: PropTypes.func,
+    /**
+     * On finished loading chunk callback
+     */
+    onFinished: PropTypes.func,
+    /**
+     * Readery config
+     */
+    readeryConfig: PropTypes.shape({
+      splitBy: PropTypes.string,
+      encoding: PropTypes.string
+    }),
+    /**
+     * File loader chunk size
+     */
+    chunkSize: PropTypes.number
   };
 
   state = {
